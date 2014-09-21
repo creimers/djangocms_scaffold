@@ -11,6 +11,7 @@ else:
     ptrn = patterns
 
 urlpatterns = ptrn('',
+    url(r'^', include('apps.{{project_name}}.urls')),
     url(r'^admin/', include(admin.site.urls)),
     # urls here
 )

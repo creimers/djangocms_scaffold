@@ -202,7 +202,7 @@ THIRD_PARTY_APPS = (
 )
 
 LOCAL_APPS = (
-
+    "apps.{{ project_name }}",
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
