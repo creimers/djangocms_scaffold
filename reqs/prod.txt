@@ -1,0 +1,8 @@
+-r common.txt
+django-storages==1.1.8
+django-s3-folder-storage==0.2
+
+#host specific packages here
+-r heroku.txt
+
+

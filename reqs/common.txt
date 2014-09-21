@@ -1,0 +1,12 @@
+#packages here are used at development as well as production
+Django==1.6.7
+South==1.0
+argparse==1.2.1
+django-classy-tags==0.5.1
+django-sekizai==0.7
+djangocms-admin-style==0.2.2
+wsgiref==0.1.2
+Markdown==2.5
+django-filter==0.7
+djangorestframework==2.4.3
+

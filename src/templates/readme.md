@@ -1,0 +1,1 @@
+templates common to applications
