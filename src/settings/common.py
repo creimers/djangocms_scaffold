@@ -190,6 +190,7 @@ THIRD_PARTY_APPS = (
 
     # Static file management:
     #'compressor',
+    'sekizai',
 
     # Asynchronous task queue:
     #'djcelery',
