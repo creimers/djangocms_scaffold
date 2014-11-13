@@ -184,7 +184,6 @@ DJANGO_APPS = (
 
 THIRD_PARTY_APPS = (
     # Database migration helpers:
-    'south',
     #rest framework
     'rest_framework',
 
