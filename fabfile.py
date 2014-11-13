@@ -9,9 +9,9 @@ from fabric.api import abort, env, local, settings, task
 env.run = 'heroku run python src/manage.py'
 HEROKU_ADDONS = (
     #'cloudamqp:lemur',
-    'heroku-postgresql:dev',
+    'heroku-postgresql',
     #'scheduler:standard',
-    'memcachier:dev',
+    'memcachier',
     'newrelic:stark',
     'pgbackups:auto-month',
     #'sentry:developer',
