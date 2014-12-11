@@ -107,7 +107,7 @@ STATICFILES_FINDERS = (
 
 ########## SECRET CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
-SECRET_KEY = r"%+pu8y0dehgf5pna9#xgd06!l%^g*#c*xdsr71&p($lfkjuz23"
+SECRET_KEY = r"{{ secrete_key }}"
 ########## END SECRET CONFIGURATION
 
 
@@ -277,4 +277,3 @@ WSGI_APPLICATION = 'wsgi.application'
 #    'compressor.filters.template.TemplateFilter',
 #]
 ########## END COMPRESSION CONFIGURATION
-
