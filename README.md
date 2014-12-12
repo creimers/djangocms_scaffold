@@ -15,7 +15,7 @@ Django Foundation is an enhanced project template for any Django application. Th
 ##Intall Django and create project
 
     $ pip install django
-    $ django-admin createproject --template=https://github.com/ludbek/django-foundation/archive/master.zip <project_name> .
+    $ django-admin startproject --template=https://github.com/ludbek/django-foundation/archive/master.zip <project_name> .
 
 ##Ignore virtualenv directory
     $ echo "<env_name>" >> .gitignore # ignore virutalenv directory
