@@ -3,6 +3,7 @@
 Django Foundation is an enhanced project template for any Django application. This is a fork of out dated [django-skel](https://github.com/rdegges/django-skel).
 
 # Installation
+It requires Python 2.7 as some of the packages bundled with it do not support Python 3 namely 'django-storages'.
 ##Create a project directory
 
     $ mkdir <project_name> && cd <project_name>
