@@ -1,2 +1,2 @@
-#This file is to be used at production only
--r reqs/prod.txt
+# path/to/host-requirements file
+# e.g -r reqs/heroku.txt

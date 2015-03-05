@@ -59,14 +59,11 @@ DATABASES = {
 # See: https://github.com/django-debug-toolbar/django-debug-toolbar#installation
 INSTALLED_APPS += (
     "debug_toolbar",
-    "django_nose",
-    "coverage",
 )
 
 # See: https://github.com/django-debug-toolbar/django-debug-toolbar#installation
 INTERNAL_IPS = ('127.0.0.1',)
-
-# See: https://github.com/django-debug-toolbar/django-debug-toolbar#installation
+DEBUG_TOOLBAR_PATCH_SETTINGS = False
 MIDDLEWARE_CLASSES += (
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
@@ -75,13 +72,3 @@ DEBUG_TOOLBAR_CONFIG = {
     'INTERCEPT_REDIRECTS': False,
 }
 ########## END TOOLBAR CONFIGURATION
-
-###CONFIGURE TEST
-# Use nose to run all tests
-TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
-
-# Tell nose to measure coverage on {{project_name}} apps
-NOSE_ARGS = [
-    '--with-coverage',
-    '--cover-package={{project_name}}',
-]

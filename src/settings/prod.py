@@ -6,9 +6,6 @@ from os import environ
 
 #import common settings
 from common import *
-#import host specific settings
-from heroku import *
-
 
 ########## EMAIL CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#email-backend
@@ -147,9 +144,3 @@ ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
 SECRET_KEY = environ.get('SECRET_KEY', SECRET_KEY)
 ########## END SECRET CONFIGURATION
-
-########## ALLOWED HOSTS CONFIGURATION
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ['.herokuapp.com']
-########## END ALLOWED HOST CONFIGURATION
-
