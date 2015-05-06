@@ -21,7 +21,7 @@ It requires Python 2.7 as some of the packages bundled with it do not support Py
 ##Ignore virtualenv directory
     $ echo "<env_name>" >> .gitignore # ignore virutalenv directory
 ##Install dependencies for development
-    $ pip install -r reqs/dev.txt
+    $ pip install -r requirements/development.txt
 ##Migrate application
     $ python src/manage.py makemigrations
     $ python src/manage.py migrate
@@ -53,10 +53,10 @@ In addition to the excellent features inherited from `django-skel`, it has follo
         ..fabfile.py
         ..requirements.txt   
         ..docs/
-        ..reqs/
+        ..requirements/
         ....common.txt
-        ....dev.txt
-        ....prod.txt
+        ....development.txt
+        ....production.txt
         ....host_name.txt
         ..src/
         ....manage.py
@@ -67,8 +67,8 @@ In addition to the excellent features inherited from `django-skel`, it has follo
         ....media/
         ....settings/
         ......common.py
-        ......dev.py
-        ......prod.py
+        ......development.py
+        ......production.py
         ......host_name.py # host specific settings
         ....static/
         ....templates

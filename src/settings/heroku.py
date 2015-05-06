@@ -1,4 +1,4 @@
-from prod import *
+from production import *
 
 #settings specific to heroku platform
 #from memcacheify import memcacheify
