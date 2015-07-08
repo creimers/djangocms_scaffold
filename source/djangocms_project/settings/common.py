@@ -3,6 +3,8 @@ from datetime import timedelta
 from os.path import abspath, basename, dirname, join, normpath
 from sys import path
 
+gettext = lambda s: s
+
 #project name
 PROJECT_NAME = "{{ project_name }}"
 
@@ -41,22 +43,17 @@ MANAGERS = ADMINS
 
 ########## DATABASE CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
+import dj_database_url
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
-    }
+    'default':
+        dj_database_url.config()
 }
 ########## END DATABASE CONFIGURATION
 
 
 ########## GENERAL CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#time-zone
-TIME_ZONE = 'Asia/Kathmandu'
+TIME_ZONE = 'Europe/Berlin'
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#language-code
 LANGUAGE_CODE = 'en'
@@ -65,10 +62,10 @@ LANGUAGE_CODE = 'en'
 SITE_ID = 1
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#use-i18n
-USE_I18N = False
+USE_I18N = True
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#use-l10n
-USE_L10N = False
+USE_L10N = True
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#use-tz
 USE_TZ = True
@@ -123,20 +120,24 @@ FIXTURE_DIRS = (
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-context-processors
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
-    'django.core.context_processors.debug',
-    'django.core.context_processors.i18n',
-    'django.core.context_processors.media',
-    'django.core.context_processors.static',
-    'django.core.context_processors.tz',
     'django.contrib.messages.context_processors.messages',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.debug',
     'django.core.context_processors.request',
+    'django.core.context_processors.media',
+    'django.core.context_processors.csrf',
+    'django.core.context_processors.tz',
     'sekizai.context_processors.sekizai',
+    'django.core.context_processors.static',
+    'cms.context_processors.cms_settings'
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-loaders
 TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
+    ('pyjade.ext.django.Loader',(
+        'django.template.loaders.filesystem.Loader',
+        'django.template.loaders.app_directories.Loader',
+    )),
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-dirs
@@ -153,11 +154,18 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.gzip.GZipMiddleware',
 
     # Default Django middleware.
-    'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'django.middleware.doc.XViewMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'cms.middleware.user.CurrentUserMiddleware',
+    'cms.middleware.page.CurrentPageMiddleware',
+    'cms.middleware.toolbar.ToolbarMiddleware',
+    'cms.middleware.language.LanguageCookieMiddleware'
 )
 ########## END MIDDLEWARE CONFIGURATION
 
@@ -175,34 +183,43 @@ DJANGO_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
+    'django.contrib.sitemaps',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    # Useful template tags:
-    'django.contrib.humanize',
 )
 
 THIRD_PARTY_APPS = (
-    # Database migration helpers:
-    #rest framework
-    'rest_framework',
-
-    # Static file management:
-    #'compressor',
     'sekizai',
-
-    # Asynchronous task queue:
-    #'djcelery',
 
     #Admin style
     'djangocms_admin_style',
-    # Admin panel and documentation:
     'django.contrib.admin',
-    #'django contrib.admindocs',
+
+    # CMS
+    'cms',
+    'menus',
+    'djangocms_text_ckeditor',
+    'treebeard',
+    'djangocms_style',
+    'djangocms_googlemap',
+    'djangocms_inherit',
+    'reversion',
+    'djangocms_project',
+
+    # THUMBNAILS
+    'easy_thumbnails',
+
+    # FILER
+    'filer',
+    'cmsplugin_filer_file',
+    'cmsplugin_filer_folder',
+    'cmsplugin_filer_link',
+    'cmsplugin_filer_image',
+    'cmsplugin_filer_teaser',
+    'cmsplugin_filer_video',
 )
 
 LOCAL_APPS = (
-    "apps.{{ project_name }}",
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -241,39 +258,71 @@ LOGGING = {
 }
 ########## END LOGGING CONFIGURATION
 
-
-########## CELERY CONFIGURATION
-# See: http://celery.readthedocs.org/en/latest/configuration.html#celery-task-result-expires
-#CELERY_TASK_RESULT_EXPIRES = timedelta(minutes=30)
-
-# See: http://docs.celeryproject.org/en/master/configuration.html#std:setting-CELERY_CHORD_PROPAGATES
-#CELERY_CHORD_PROPAGATES = True
-
-# See: http://celery.github.com/celery/django/
-#setup_loader()
-########## END CELERY CONFIGURATION
-
-
 ########## WSGI CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#wsgi-application
 WSGI_APPLICATION = 'wsgi.application'
 ########## END WSGI CONFIGURATION
 
 
-########## COMPRESSION CONFIGURATION
-# See: http://django_compressor.readthedocs.org/en/latest/settings/#django.conf.settings.COMPRESS_ENABLED
-#COMPRESS_ENABLED = True
+########## CMS CONFIGURATION
 
-# See: http://django-compressor.readthedocs.org/en/latest/settings/#django.conf.settings.COMPRESS_CSS_HASHING_METHOD
-#COMPRESS_CSS_HASHING_METHOD = 'content'
+LANGUAGES = (
+    ## Customize this
+    ('de', gettext('de')),
+)
 
-# See: http://django_compressor.readthedocs.org/en/latest/settings/#django.conf.settings.COMPRESS_CSS_FILTERS
-#COMPRESS_CSS_FILTERS = [
-#    'compressor.filters.template.TemplateFilter',
-#]
+CMS_LANGUAGES = {
+    ## Customize this
+    'default': {
+        'public': True,
+        'hide_untranslated': False,
+        'redirect_on_fallback': True,
+    },
+    1: [
+        {
+            'public': True,
+            'code': 'de',
+            'hide_untranslated': False,
+            'name': gettext('de'),
+            'redirect_on_fallback': True,
+        },
+    ],
+}
 
-# See: http://django_compressor.readthedocs.org/en/latest/settings/#django.conf.settings.COMPRESS_JS_FILTERS
-#COMPRESS_JS_FILTERS = [
-#    'compressor.filters.template.TemplateFilter',
-#]
-########## END COMPRESSION CONFIGURATION
+CMS_TEMPLATES = (
+    ## Customize this
+    ('layout/fullwidth.jade', 'Fullwidth'),
+    ('layout/container.jade', 'Container'),
+)
+
+CMS_PERMISSION = True
+
+CMS_PLACEHOLDER_CONF = {}
+
+########## END CMS CONFIGURATION
+
+########## MIGRATION CONFIGURATION
+
+MIGRATION_MODULES = {
+    'djangocms_googlemap': 'djangocms_googlemap.migrations_django',
+    'djangocms_inherit': 'djangocms_inherit.migrations_django',
+    'djangocms_style': 'djangocms_style.migrations_django',
+
+    'cmsplugin_filer_file': 'cmsplugin_filer_file.migrations_django',
+    'cmsplugin_filer_folder': 'cmsplugin_filer_folder.migrations_django',
+    'cmsplugin_filer_link': 'cmsplugin_filer_link.migrations_django',
+    'cmsplugin_filer_image': 'cmsplugin_filer_image.migrations_django',
+    'cmsplugin_filer_teaser': 'cmsplugin_filer_teaser.migrations_django',
+    'cmsplugin_filer_video': 'cmsplugin_filer_video.migrations_django',
+}
+
+########## END MIGRATION CONFIGURATION
+
+########## THUMBNAIL CONFIGURATION
+THUMBNAIL_PROCESSORS = (
+    'easy_thumbnails.processors.colorspace',
+    'easy_thumbnails.processors.autocrop',
+    'filer.thumbnail_processors.scale_and_crop_with_subject_location',
+    'easy_thumbnails.processors.filters',
+)
+########## END THUMBNAIL CONFIGURATION

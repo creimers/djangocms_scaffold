@@ -14,6 +14,10 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 ########## END DEBUG CONFIGURATION
 
+########## ALLOWED HOSTS
+ALLOWED_HOSTS = ['localhost']
+########## END ALLOWED HOSTS
+
 
 ########## EMAIL CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#email-backend
@@ -23,15 +27,13 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 ########## DATABASE CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
+if 'DATABASE_URL' not in os.environ:
+    os.environ['DATABASE_URL'] = 'sqlite:///' + PROJECT_ROOT + '/project.db'
+
+import dj_database_url
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': normpath(join(PROJECT_ROOT, 'default.db')),
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
-    }
+    'default':
+        dj_database_url.config()
 }
 ########## END DATABASE CONFIGURATION
 

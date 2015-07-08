@@ -1,4 +1,0 @@
-django-heroku-postgresify==0.3
-#django-heroku-memcacheify
-gunicorn==18.0
-psycopg2==2.5.1

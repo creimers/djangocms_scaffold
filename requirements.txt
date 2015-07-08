@@ -1,2 +1,0 @@
-# path/to/host-requirements file
-# e.g -r requirements/heroku.txt
