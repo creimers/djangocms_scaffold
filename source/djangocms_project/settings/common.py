@@ -314,3 +314,5 @@ THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.filters',
 )
 ########## END THUMBNAIL CONFIGURATION
+
+TEST_RUNNER = 'django.test.runner.DiscoverRunner'
