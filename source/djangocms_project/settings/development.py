@@ -4,6 +4,10 @@ import os
 from os.path import join, normpath, dirname
 from common import *
 
+########## SECRET CONFIGURATION
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
+SECRET_KEY = r"development+secret"
+########## END SECRET CONFIGURATION
 
 ########## DEBUG CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#debug

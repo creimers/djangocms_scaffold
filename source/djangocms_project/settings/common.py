@@ -1,5 +1,4 @@
 """Common settings and globals."""
-from datetime import timedelta
 from os.path import abspath, basename, dirname, join, normpath
 from sys import path
 
@@ -7,9 +6,6 @@ gettext = lambda s: s
 
 #project name
 PROJECT_NAME = "{{ project_name }}"
-
-#from djcelery import setup_loader
-
 
 ########## PATH CONFIGURATION
 # Absolute filesystem path to the project source directory:
@@ -89,13 +85,6 @@ STATICFILES_FINDERS = (
     #'compressor.finders.CompressorFinder',
 )
 ########## END STATIC FILE CONFIGURATION
-
-
-########## SECRET CONFIGURATION
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
-SECRET_KEY = r"aoiujlkkjasdfu|&&3"
-########## END SECRET CONFIGURATION
-
 
 ########## FIXTURE CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-FIXTURE_DIRS
