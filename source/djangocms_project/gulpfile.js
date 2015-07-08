@@ -11,7 +11,7 @@ var uglify = require('gulp-uglify');
 var minifyCss = require('gulp-minify-css');
 var rev = require('gulp-rev');
 
-var task_folder = './.gulp_tasks/';
+var task_folder = './_gulp_tasks/';
 
 var config = {
     path: {
