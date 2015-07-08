@@ -1,10 +1,8 @@
 """Development settings and globals."""
 
-
+import os
 from os.path import join, normpath, dirname
-
 from common import *
-import os.environ
 
 
 ########## DEBUG CONFIGURATION
