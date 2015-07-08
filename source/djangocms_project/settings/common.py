@@ -193,7 +193,6 @@ THIRD_PARTY_APPS = (
     'djangocms_googlemap',
     'djangocms_inherit',
     'reversion',
-    'djangocms_project',
 
     # THUMBNAILS
     'easy_thumbnails',
