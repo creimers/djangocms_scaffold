@@ -1,7 +1,7 @@
 """Development settings and globals."""
 
 
-from os.path import join, normpath
+from os.path import join, normpath, dirname
 
 from common import *
 
@@ -28,7 +28,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 ########## DATABASE CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
 if 'DATABASE_URL' not in os.environ:
-    os.environ['DATABASE_URL'] = 'sqlite:///' + PROJECT_ROOT + '/project.db'
+    db_dir = join(dirname(dirname(PROJECT_ROOT)), 'database')
+    os.environ['DATABASE_URL'] = 'sqlite:///' + db_dir + '/project.db'
 
 import dj_database_url
 DATABASES = {
