@@ -1,0 +1,19 @@
+{
+  "name": "djangocms_scaffold",
+  "version": "0.1.0",
+  "authors": [
+    "creimers <creimers@byteyard.de>"
+  ],
+  "description": "djangocms pyjade example project",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.2.0",
+  }
+}
