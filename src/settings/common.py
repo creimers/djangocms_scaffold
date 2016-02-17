@@ -99,7 +99,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(PROJECT_ROOT, 'templates'),
+            join(PROJECT_ROOT, 'templates'),
         ],  
         'OPTIONS': {
             'context_processors': [
