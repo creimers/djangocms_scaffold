@@ -1,0 +1,21 @@
+{
+  "name": "djangocms-scaffold",
+  "version": "0.1.0",
+  "description": "based on django 1.7.8, django-cms 3.1.1 and pyjade 3.0.0",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bower": "^1.7.7",
+    "gulp": "^3.9.1",
+    "gulp-load-plugins": "^1.0.0-rc.1",
+    "gulp-rev": "^5.0.1",
+    "gulp-sass": "^2.2.0",
+  },
+  "devDependencies": {
+    "gulp-jade-usemin": "^1.0.5",
+    "gulp-usemin": "^0.3.11"
+  }
+}
