@@ -14,7 +14,6 @@ SECRET_KEY = r"development+secret"
 DEBUG = True
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-debug
-TEMPLATE_DEBUG = DEBUG
 ########## END DEBUG CONFIGURATION
 
 ########## ALLOWED HOSTS
