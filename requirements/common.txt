@@ -17,4 +17,4 @@ django-filer==1.1.1
 cmsplugin-filer==1.0.1
 dj-database-url==0.4.0
 djangocms-inherit==0.1.1
-django-select1==5.8.0
+django-select2==5.8.0
