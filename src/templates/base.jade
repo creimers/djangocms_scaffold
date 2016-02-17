@@ -1,0 +1,25 @@
+- load cms_tags menu_tags sekizai_tags
+
+!!! 5
+
+html(lang="en")
+  head
+    title
+      block title
+
+    meta(charset='utf-8')
+
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+
+    link(rel='stylesheet', href='{{ STATIC_URL }}main.css')
+
+    - render_block "css"
+
+  body
+    - cms_toolbar
+
+    block content
+
+    script(src='{{ STATIC_URL }}bower_components/jquery/dist/jquery.min.js')
+
+    - render_block "js"
